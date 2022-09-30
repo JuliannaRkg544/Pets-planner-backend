@@ -1,0 +1,11 @@
+import { Router } from "express";
+import { logup } from "../controllers/authController.js";
+import schemaValidator from "../middleware/schemaValidator.js";
+import { authSchema } from "../schemas/authSchema.js";
+
+const authRouter = Router()
+
+authRouter.post("/logup", schemaValidator(authSchema), logup)
+authRouter.post("/login")
+
+export default authRouter
