@@ -6,7 +6,7 @@ import { UserData } from "../repositories/authRepository.js";
 
 dotenv.config();
 
-async function logupUser(email: string, password: string, passswordConfirmation:string ) {
+async function logupUser(name:string, email: string, password: string ) {
   const emails = await authRepository.findUserByEmail(email);
 
   if (emails.length > 0) {
@@ -17,6 +17,7 @@ async function logupUser(email: string, password: string, passswordConfirmation:
   const encryptedPassword = await bcrypt.hash(password, 10);
 
   const userdata: UserData = {
+    name: name,
     email: email,
     password: encryptedPassword,
   };
@@ -24,7 +25,7 @@ async function logupUser(email: string, password: string, passswordConfirmation:
   await authRepository.insertUser(userdata);
 }
 
-async function loginUser(email: string, password: string, passswordConfirmation:string) {
+async function loginUser(email: string, password: string) {
   const secretkey = process.env.JWT_SECRET;
   const user = await authRepository.findUserByEmail(email);
   if (!email || !password) {
