@@ -17,3 +17,16 @@ model Users{
   password   String
   @@map("users")
 }
+model Pets{
+  id         Int            @id @default(autoincrement())
+  name       String
+  birthdate  String
+  genre      String
+  breed      String
+  @@map("pets")
+}
+
+enum GenreType{
+    macho
+    femea
+}
