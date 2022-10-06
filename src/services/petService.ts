@@ -12,6 +12,31 @@ async function addPet( name: string, birthdate: string, genre: string, breed: st
     await petsRepository.insertPet(petdata)
 }
 
+async function getAllPets() {
+    const pets = await petsRepository.getAllPets()
+    return pets
+}
+
+async function getOnePet(id:number) {
+    const pet  = await  petsRepository.getPetById(id)
+    return pet 
+    
+}
+
+async function addTask(id:number, description:string) {
+    const taskdata = {
+        userId:id,
+        description
+    }
+    await petsRepository.createTask(taskdata)
+    
+}
+
+async function getTasks(id:number) {
+    const tasks = await petsRepository.findTasksByUserId(id)
+    return tasks
+}
+
 export {
-    addPet
+    addPet, getAllPets, getOnePet, addTask, getTasks
 }

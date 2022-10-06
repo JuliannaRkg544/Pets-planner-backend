@@ -10,23 +10,38 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users{
-  id         Int           @id @default(autoincrement())
-  name       String
-  email      String        @unique
-  password   String
+model Users {
+  id       Int     @id @default(autoincrement())
+  name     String
+  email    String  @unique
+  password String
+  Tasks    Tasks[]
+
   @@map("users")
 }
-model Pets{
-  id         Int            @id @default(autoincrement())
-  name       String
-  birthdate  String
-  genre      String
-  breed      String
+
+model Pets {
+  id        Int    @id @default(autoincrement())
+  name      String
+  birthdate String
+  genre     String
+  breed     String
+
   @@map("pets")
 }
 
-enum GenreType{
-    macho
-    femea
+model Tasks {
+  id          Int    @id @default(autoincrement())
+  description String
+  userId      Int
+  Users       Users  @relation(fields: [userId], references: [id])
+
+  @@map("tasks")
+}
+
+enum GenreType {
+  macho
+  femea
+  Macho
+  Femea
 }
