@@ -24,9 +24,9 @@ async function getOnePet(id:number) {
 }
 
 async function addTask(id:number, description:string) {
-    const taskdata = {
-        userId:id,
-        description
+    const taskdata:petsRepository.TaskData = {
+        description,
+        userId:id
     }
     await petsRepository.createTask(taskdata)
     

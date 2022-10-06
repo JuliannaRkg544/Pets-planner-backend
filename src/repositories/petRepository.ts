@@ -1,7 +1,9 @@
 import connection from "../config/connection.js";
 import {Pets} from "@prisma/client"
+import { Tasks } from "@prisma/client";
 
 export type PetData = Omit<Pets,"id"> 
+export type TaskData = Omit<Tasks,"id">
 
 
 async function insertPet(petData: PetData) {
@@ -20,11 +22,11 @@ async function getPetById(id:number) {
 }
 
 async function createTask(taskdata:any){
-    await connection.pets.create({data:taskdata})
+    await connection.tasks.create({data:taskdata})
 }
 
 async function findTasksByUserId(userId:number) {
-    const tasks = await connection.tasks.findFirst({where:{userId}})
+    const tasks = await connection.tasks.findMany({where:{userId}})
     return tasks
 }
 
