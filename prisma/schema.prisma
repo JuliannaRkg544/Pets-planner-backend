@@ -21,22 +21,61 @@ model Users {
 }
 
 model Pets {
-  id        Int    @id @default(autoincrement())
+  id        Int         @id @default(autoincrement())
   name      String
   birthdate String
   genre     String
   breed     String
+  isCat     Boolean     @default(false)
+  isDog     Boolean     @default(false)
+  Cat       HealthCat[]
+  Dog       HealthDog[]
 
   @@map("pets")
 }
 
 model Tasks {
-  id          Int    @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   description String
   userId      Int
-  Users       Users  @relation(fields: [userId], references: [id])
+  Users       Users   @relation(fields: [userId], references: [id])
+  done        Boolean @default(false)
 
   @@map("tasks")
+}
+
+model HealthCat {
+  id              Int     @id @default(autoincrement())
+  quadrupla       Boolean @default(false)
+  quadrupla_date  String?
+  antirabica      Boolean @default(false)
+  antirabica_date String?
+  verm1           Boolean @default(false)
+  verm1_date      String?
+  verm2           Boolean @default(false)
+  verm2_date      String?
+  petId           Int     @unique
+  Pets            Pets    @relation(fields: [petId], references: [id])
+
+  @@map("healthCat")
+}
+
+model HealthDog {
+  id              Int     @id @default(autoincrement())
+  gripe           Boolean @default(false)
+  gripe_date      String? 
+  antirabica      Boolean @default(false)
+  antirabica_date String?
+  V8_V10          Boolean @default(false)
+  V8_V10_date     String?
+  petId           Int     @unique
+  verm1           Boolean @default(false)
+  verm1_date      String?
+  verm2           Boolean @default(false)
+  verm2_date      String?
+  Pets            Pets    @relation(fields: [petId], references: [id])
+
+  @@map("healthDog")
 }
 
 enum GenreType {

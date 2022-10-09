@@ -8,5 +8,7 @@ export const petsSchema = Joi.object<PetData>({
     name: Joi.string().required(),
     birthdate: Joi.string().pattern(dateRegex),
     genre: Joi.string().valid('macho','femea').required(),
-    breed: Joi.string().required()
+    breed: Joi.string().required(),
+    isCat: Joi.boolean(),
+    isDog:  Joi.boolean()
 })
