@@ -53,6 +53,7 @@ async function deletTaskById(id: number) {
 }
 
 async function deletePetById(petid: number) {
+ 
   await connection.pets.delete({ where: { id:petid } });
 }
 

@@ -24,10 +24,10 @@ import {
   setDateDogVerm2,
 } from "../controllers/petsController.js";
 import schemaValidator from "../middleware/schemaValidator.js";
-import { petsSchema } from "../schemas/petSchema.js";
+import { petsSchema } from "../schema/petSchema.js";
 // import upload from "../config/multer.js";
-import { tokenValidator } from "../schemas/tokenValidator.js";
-import dateSchema from "../schemas/dateSchema.js";
+import { tokenValidator } from "../schema/tokenValidator.js";
+import dateSchema from "../schema/dateSchema.js";
 
 
 const petsRouter = Router();
@@ -35,7 +35,7 @@ const petsRouter = Router();
 
 
 petsRouter.post("/pet/new",schemaValidator(petsSchema) ,addPet)
-petsRouter.get("/pet/get", getAllPets);
+petsRouter.get("/pet/get", getAllPets); 
 
 petsRouter.get("/pet/get/dog/:id", getOneDog);
 petsRouter.get("/pet/get/cat/:id", getOneCat);

@@ -29,7 +29,7 @@ model Pets {
   breed     String
   isCat     Boolean     @default(false)
   isDog     Boolean     @default(false)
-  Cat       HealthCat[]
+  Cat       HealthCat[]  
   Dog       HealthDog[]
 
   @@map("pets")
@@ -56,7 +56,7 @@ model HealthCat {
   verm2           Boolean @default(false)
   verm2_date      String?
   petId           Int     @unique
-  Pets            Pets    @relation(fields: [petId], references: [id])
+  Pets            Pets    @relation(fields: [petId], references: [id], onDelete: Cascade )
 
   @@map("healthCat")
 }
@@ -74,7 +74,7 @@ model HealthDog {
   verm1_date      String?
   verm2           Boolean @default(false)
   verm2_date      String?
-  Pets            Pets    @relation(fields: [petId], references: [id])
+  Pets            Pets    @relation(fields: [petId], references: [id], onDelete: Cascade)
 
   @@map("healthDog")
 }
