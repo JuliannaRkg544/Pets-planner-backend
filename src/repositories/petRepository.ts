@@ -68,7 +68,7 @@ async function updateTask(taskid: number, isDone:boolean) {
 async function healthDogPost(data:HealthDogData){
   await connection.healthDog.create({data:data})
 }
-
+ 
 async function healthCatPost(data:HealthCatData){
   await connection.healthCat.create({data:data})
 }
