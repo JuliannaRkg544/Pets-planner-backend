@@ -13,8 +13,8 @@ async function insertPet(petData: PetData) {
   await connection.pets.create({ data: petData });
 }
 
-async function getAllPets() {
-  const pets = await connection.pets.findMany();
+async function getAllPets(userId:number) {
+  const pets = await connection.pets.findMany({where:{userId}});
   return pets;
 }
 

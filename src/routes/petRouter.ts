@@ -33,8 +33,8 @@ const petsRouter = Router();
 
 
 
-petsRouter.post("/pet/new",schemaValidator(petsSchema) ,addPet)
-petsRouter.get("/pet/get", getAllPets); 
+petsRouter.post("/pet/new",schemaValidator(petsSchema), tokenValidator ,addPet)
+petsRouter.get("/pet/get", tokenValidator, getAllPets); 
 
 petsRouter.get("/pet/get/dog/:id", getOneDog);
 petsRouter.get("/pet/get/cat/:id", getOneCat);

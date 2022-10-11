@@ -1,6 +1,0 @@
--- AlterTable
-ALTER TABLE "healthDog" ALTER COLUMN "gripe_date" DROP NOT NULL,
-ALTER COLUMN "antirabica_date" DROP NOT NULL,
-ALTER COLUMN "V8_V10_date" DROP NOT NULL,
-ALTER COLUMN "verm1_date" DROP NOT NULL,
-ALTER COLUMN "verm2_date" DROP NOT NULL;

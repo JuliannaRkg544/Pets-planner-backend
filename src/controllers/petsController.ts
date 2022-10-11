@@ -4,8 +4,8 @@ import * as petService from "../services/petService.js";
 
 
 export async function addPet(req: Request, res: Response) {
-
-  console.log("file do controller ",req.file)
+  const userId = res.locals.user
+  console.log("userid  ",userId)
   console.log("body ", req.body)
   const {
     name,
@@ -21,14 +21,16 @@ export async function addPet(req: Request, res: Response) {
     genre,
     breed,
     isCat,
-    isDog  )
+    isDog, userId  )
   ;
   res.sendStatus(201);
 }
 
 
 export async function getAllPets(req:Request, res:Response){
-  const petsArray = await petService.getAllPets()
+  const userid = res.locals.user
+  const petsArray = await petService.getAllPets(userid)
+
    res.status(200).send(petsArray)
 }
 

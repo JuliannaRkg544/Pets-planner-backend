@@ -7,7 +7,8 @@ async function addPet(
   genre: string,
   breed: string,
   isCat: boolean,
-  isDog: boolean
+  isDog: boolean,
+  userId: number
 ) {
   const petdata: PetData = {
     name,
@@ -16,12 +17,13 @@ async function addPet(
     breed,
     isCat,
     isDog,
+    userId
   };
   await petsRepository.insertPet(petdata);
 }
 
-async function getAllPets() {
-  const pets = await petsRepository.getAllPets();
+async function getAllPets(userid:number) {
+  const pets = await petsRepository.getAllPets(userid);
   return pets;
 }
 
