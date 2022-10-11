@@ -81,9 +81,3 @@ model HealthDog {
   @@map("healthDog")
 }
 
-enum GenreType {
-  macho
-  femea
-  Macho
-  Femea
-}
