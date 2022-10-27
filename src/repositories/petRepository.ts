@@ -129,7 +129,7 @@ async function updateDogDateVerm2(date:string,petId:number){
 
 //CAT
 async function updateCatDateAntiRabica(date:string,petId:number){
-  
+   
   await connection.healthCat.update({
     where:{petId},
     data:{antirabica_date: date, antirabica:true }
