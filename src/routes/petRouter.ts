@@ -39,7 +39,7 @@ petsRouter.get("/pet/get", tokenValidator, getAllPets);
 petsRouter.get("/pet/get/dog/:id", getOneDog);
 petsRouter.get("/pet/get/cat/:id", getOneCat);
 
-petsRouter.post("/pet/task/add", tokenValidator, addTask);
+petsRouter.post("/pet/task/add", addTask);
 petsRouter.get("/pet/task", tokenValidator, getTasks);
 petsRouter.delete("/pet/delete/:id", tokenValidator, deletePet);
 petsRouter.delete("/pet/task/delete/:id", tokenValidator, deleteTask);
